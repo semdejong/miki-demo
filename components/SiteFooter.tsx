@@ -7,7 +7,17 @@ export default function SiteFooter() {
   return (
     <footer className="mt-auto bg-paper">
       <div className="cut-edge" aria-hidden />
-      <div className="grid gap-8 px-5 py-12 md:px-10 lg:grid-cols-[1.2fr_1fr]">
+      <nav aria-label="Vakken" className="flex flex-wrap gap-x-5 gap-y-1 px-5 pt-6 md:px-10">
+        {Object.values(content.services).map((service) => (
+          <Link key={service.href} href={service.href} className="prose-link inline-flex min-h-11 items-center">
+            {service.nav}
+          </Link>
+        ))}
+        <Link href="/projecten" className="prose-link inline-flex min-h-11 items-center">
+          Projectfoto&apos;s
+        </Link>
+      </nav>
+      <div className="grid gap-8 px-5 py-8 md:px-10 lg:grid-cols-[1.2fr_1fr]">
         <address>
           <p className="font-display text-3xl leading-tight">{company.person}</p>
           <p className="mt-3">{company.name}</p>

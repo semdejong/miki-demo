@@ -7,7 +7,7 @@ const toneClass = {
   paper: "bg-paper",
 } as const;
 
-export default function ServiceStrips() {
+export default function ServiceStrips({ current }: { current?: string }) {
   const items = Object.values(content.services);
   return (
     <div className="border-t-[3px] border-olive">
@@ -16,7 +16,8 @@ export default function ServiceStrips() {
           <Link
             key={service.id}
             href={service.href}
-            className={`baan flex min-h-24 flex-col justify-between px-4 py-5 hover:text-purple-text min-[1024px]:min-h-[22rem] min-[1024px]:px-5 min-[1024px]:py-6 ${toneClass[service.tone]}`}
+            aria-current={current === service.id ? "page" : undefined}
+            className={`baan flex min-h-24 flex-col justify-between px-4 py-5 hover:text-purple-text min-[1024px]:min-h-[22rem] min-[1024px]:px-5 min-[1024px]:py-6 ${toneClass[service.tone]} ${current === service.id ? "shadow-[inset_0_3px_0_var(--olive)]" : ""}`}
             style={{ ["--grow" as string]: service.grow, ["--baan-w" as string]: service.width }}
           >
             <span className="block min-w-0 text-balance font-display text-[1.65rem] leading-tight min-[1024px]:text-[clamp(1.45rem,1.65vw,2rem)]">

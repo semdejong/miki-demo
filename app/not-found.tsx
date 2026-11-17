@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { content } from "@/content";
+import ServiceStrips from "@/components/ServiceStrips";
 
 export const metadata: Metadata = {
   title: "Pagina niet gevonden",
@@ -8,17 +10,36 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <article className="px-5 py-20 md:px-10 md:py-28">
-      <p className="font-label text-olive-text">404</p>
-      <h1 className="mt-4 max-w-[14ch] text-[clamp(2.4rem,5vw,3.6rem)] leading-[1.08]">Deze pagina bestaat niet</h1>
-      <p className="mt-6 max-w-[46ch]">
-        Het adres klopt niet, of de pagina is er niet. Ga terug naar de startpagina van Schildersbedrijf Miki.
-      </p>
-      <p className="mt-8">
-        <Link href="/" className="inline-flex min-h-11 items-center bg-ink px-4 font-medium text-paper">
-          Naar de homepage
-        </Link>
-      </p>
+    <article>
+      <div className="px-5 py-16 md:px-10 md:py-20">
+        <p className="font-label text-olive-text">404</p>
+        <h1 className="mt-4 max-w-[14ch] text-[clamp(2.6rem,5vw,4rem)] leading-[1.02]">Deze pagina bestaat niet</h1>
+        <p className="mt-6 max-w-[46ch]">
+          Het adres klopt niet, of de pagina is er niet. De baan hieronder is afgesneden. De vakken daaronder bestaan wel.
+        </p>
+        <p className="mt-8">
+          <Link href="/" className="inline-flex min-h-11 items-center bg-ink px-4 font-medium text-paper">
+            Naar de homepage
+          </Link>
+        </p>
+      </div>
+
+      <div className="flex items-end border-t-[3px] border-olive" aria-hidden>
+        <div className="h-36 w-[16%] bg-vlak" />
+        <div className="h-16 w-[34%] border-l border-ink/20 bg-sheet" />
+        <div className="flex h-28 min-w-0 flex-1 items-end border-l border-ink/15 bg-paper px-4 py-4">
+          <p className="font-label text-olive-text">Snede</p>
+        </div>
+      </div>
+
+      <section aria-labelledby="verder" className="pt-14">
+        <div className="px-5 pb-4 md:px-10">
+          <h2 id="verder" className="text-[clamp(1.8rem,3vw,2.4rem)] leading-tight">
+            Verder bij {content.company.name}
+          </h2>
+        </div>
+        <ServiceStrips />
+      </section>
     </article>
   );
 }

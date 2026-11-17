@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { photosByIds, type ProjectPhoto } from "@/content";
 
-type Group = { label: string; ids: string[] };
+type Group = { label: string; slug?: string; note?: string; ids: string[] };
 
 type Props = {
   photos?: ProjectPhoto[];
@@ -110,11 +110,13 @@ export default function Gallery({ photos, groups, stacked = false }: Props) {
           const start = cursor;
           const slice = flat.slice(start, start + group.ids.length);
           cursor += group.ids.length;
+          const slug = group.slug ?? group.label;
           return (
-            <section key={group.label} className="border-t-[3px] border-olive" aria-labelledby={`groep-${group.label}`}>
-              <h2 id={`groep-${group.label}`} className="font-label px-5 py-4 text-olive-text md:px-8">
+            <section key={slug} id={`groep-${slug}`} className="scroll-mt-28 border-t-[3px] border-olive" aria-labelledby={`kop-${slug}`}>
+              <h2 id={`kop-${slug}`} className="font-label px-5 pt-4 text-olive-text md:px-8">
                 {group.label}
               </h2>
+              {group.note ? <p className="max-w-[58ch] px-5 pt-2 pb-4 md:px-8">{group.note}</p> : null}
               <div className="flex flex-wrap items-start">{slice.map((item, offset) => renderItem(item, start + offset))}</div>
             </section>
           );

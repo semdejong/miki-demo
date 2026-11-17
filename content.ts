@@ -95,18 +95,73 @@ export const photos: ProjectPhoto[] = [
   { id: "74", src: "/img/projecten/74.jpg", width: 1024, height: 717, alt: "Zwarte openslaande deuren met roedeverdeling, zijramen en een witte omlijsting in een bakstenen gevel." },
 ];
 
-export const projectGroups: { label: string; ids: string[] }[] = [
-  { label: "01 – 06", ids: ["01", "02", "03", "04", "05", "06"] },
-  { label: "07 – 18", ids: ["07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"] },
-  { label: "19 – 23", ids: ["19", "20", "21", "22", "23"] },
-  { label: "24 – 27", ids: ["24", "25", "26", "27"] },
-  { label: "28 – 30", ids: ["28", "29", "30"] },
-  { label: "31 – 41", ids: ["31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41"] },
-  { label: "42 – 52", ids: ["42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"] },
-  { label: "53 – 57", ids: ["53", "54", "55", "56", "57"] },
-  { label: "58 – 63", ids: ["58", "59", "60", "61", "62", "63"] },
-  { label: "64 – 69", ids: ["64", "65", "66", "67", "68", "69"] },
-  { label: "70 – 74", ids: ["70", "71", "72", "73", "74"] },
+export const projectGroups: { label: string; slug: string; note: string; ids: string[] }[] = [
+  {
+    label: "01 – 06",
+    slug: "01-06",
+    note: "Een kozijn in de verf, een zolder met dakbeschot, en een wand van glasblokken.",
+    ids: ["01", "02", "03", "04", "05", "06"],
+  },
+  {
+    label: "07 – 18",
+    slug: "07-18",
+    note: "Binnenwanden en plafonds: kaal, in het stucwerk, en wit afgewerkt.",
+    ids: ["07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"],
+  },
+  {
+    label: "19 – 23",
+    slug: "19-23",
+    note: "Een wit geschilderde woning, met luiken, deuren en een carport.",
+    ids: ["19", "20", "21", "22", "23"],
+  },
+  {
+    label: "24 – 27",
+    slug: "24-27",
+    note: "Een vloer in aanleg, en een houten vloer die deels gelakt is.",
+    ids: ["24", "25", "26", "27"],
+  },
+  {
+    label: "28 – 30",
+    slug: "28-30",
+    note: "Wanden in een bedrijfs- of kantoorruimte, met regels, platen en isolatie.",
+    ids: ["28", "29", "30"],
+  },
+  {
+    label: "31 – 41",
+    slug: "31-41",
+    note: "Houtrot aan dorpels en kozijnen, een deur in bewerking, en hout in een gevelvak.",
+    ids: ["31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41"],
+  },
+  {
+    label: "42 – 52",
+    slug: "42-52",
+    note: "Tegels en vloerplanken, in de lijm en gelegd.",
+    ids: ["42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"],
+  },
+  {
+    label: "53 – 57",
+    slug: "53-57",
+    note: "Een binnenkamer, een gebogen koplat op de werkbank, en een ronde houten omlijsting.",
+    ids: ["53", "54", "55", "56", "57"],
+  },
+  {
+    label: "58 – 63",
+    slug: "58-63",
+    note: "Een houten berging in een tuin, van open skelet tot betimmering.",
+    ids: ["58", "59", "60", "61", "62", "63"],
+  },
+  {
+    label: "64 – 69",
+    slug: "64-69",
+    note: "Een gemetselde boog tegen een wit geschilderde muur.",
+    ids: ["64", "65", "66", "67", "68", "69"],
+  },
+  {
+    label: "70 – 74",
+    slug: "70-74",
+    note: "Geschilderde gevels, een erker, en deuren in een bakstenen muur.",
+    ids: ["70", "71", "72", "73", "74"],
+  },
 ];
 
 const photoMap = new Map(photos.map((photo) => [photo.id, photo]));
@@ -175,7 +230,41 @@ export const content = {
     formNote:
       "Dit formulier verstuurt niets naar een server. Het opent een e-mail in uw mailprogramma, gericht aan j.miki@hotmail.com, en begint met «Goedendag,». U verstuurt die e-mail zelf.",
     baanLabel: "01 Schilderwerk · 02 Behang · 03 Glas · 04 Stuc en timmer",
+    zoek: "Bent u op zoek naar een betrouwbaar en professioneel schildersbedrijf in Lochem of omgeving?",
+    pandenKop: "Uw woning, kantoor, winkel of bedrijfsunit",
+    langsKop: "Vrijblijvend bij u langs",
+    reeksKop: "Wat de reeks toont",
+    reeksUitleg:
+      "De nummers volgen de oorspronkelijke site. Er is geen titel, plaats of jaar bij bekend. De zin erbij beschrijft alleen wat op de foto's te zien is.",
+    nietElkVak:
+      "Niet elke foto is een apart vak. Tegels, een berging of metselwerk staan erbij omdat ze op de foto staan. Het aanbod blijft schilderwerk, behangwerk, beglazing, stukadoorswerk en klein timmerwerk, waaronder het vervangen van houtrot.",
   },
+
+  panden: [
+    { id: "woning", title: "Woning", grow: 1.15, width: "100%", tone: "vlak" as const },
+    { id: "kantoor", title: "Kantoor", grow: 0.78, width: "74%", tone: "white" as const },
+    { id: "winkel", title: "Winkel", grow: 0.96, width: "86%", tone: "paper" as const },
+    { id: "unit", title: "Bedrijfsunit", grow: 1.28, width: "64%", tone: "vlak" as const },
+  ],
+
+  wijzen: [
+    {
+      id: "uren",
+      label: "Op uren",
+      title: "De offerte geschiedt op basis van gewerkte uren.",
+      grow: 1.35,
+      width: "100%",
+      tone: "vlak" as const,
+    },
+    {
+      id: "som",
+      label: "Aanneemsom",
+      title: "Desgewenst spreken we vooraf een vaste aanneemsom af.",
+      grow: 0.88,
+      width: "82%",
+      tone: "white" as const,
+    },
+  ],
 
   nav: [
     { href: "/", label: "Home" },
@@ -199,16 +288,19 @@ export const content = {
       description:
         "Schilderwerk en totaalonderhoud van woning, kantoor, winkel of bedrijfsunit door Schildersbedrijf Miki in Lochem.",
       h1: "Schilderwerk",
+      lead: "Schilderwerk voor het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit.",
       strip: "Totaalonderhoud van woning, kantoor, winkel of bedrijfsunit.",
       grow: 1.5,
       width: "100%",
       tone: "vlak",
       paragraphs: [
+        "Bent u op zoek naar een betrouwbaar en professioneel schildersbedrijf in Lochem of omgeving? Heeft u zelf geen tijd of zin om een klus uit te voeren?",
         "Wij zijn gespecialiseerd in het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit. Schilderwerk hoort daarbij.",
         "Naast het schilderwerk kunnen wij ook uw beglazing, behangwerk, stukadoorswerk en klein timmerwerk en het vervangen van houtrot verzorgen. " + onderEenDak,
+        "Op de foto's ziet u onder meer een kozijn in de verf, wit geschilderde gevels, deuren en een houten vloer die deels gelakt is. Zonder titel, plaats of jaar.",
         offerteZin,
       ],
-      photoIds: ["01", "19", "21", "22", "27", "70", "72"],
+      photoIds: ["01", "16", "19", "22", "27", "39", "70", "72"],
     },
     behang: {
       id: "behang",
@@ -218,14 +310,15 @@ export const content = {
       description:
         "Behangwerk door Schildersbedrijf Miki, samen met schilderwerk, beglazing, stucwerk en klein timmerwerk.",
       h1: "Behangen",
+      lead: "Behangwerk, samen met de rest van het onderhoud onder één dak.",
       strip: "Behangwerk, samen met het overige onderhoud onder één dak.",
       grow: 0.86,
       width: "88%",
       tone: "white",
       paragraphs: [
         "Naast het schilderwerk kunnen wij ook uw behangwerk verzorgen.",
-        "Samen met beglazing, stukadoorswerk en klein timmerwerk hoort dat bij het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit. " + onderEenDak,
-        "Op de werkfoto's is geen behangbeurt als zodanig te herkennen; de foto's hebben geen bijschrift. Behangwerk vraagt u aan via de offerte.",
+        "Dat geldt voor uw woning, kantoor, winkel of bedrijfsunit in Lochem of omgeving. Samen met beglazing, stukadoorswerk en klein timmerwerk hoort behang bij het totaalonderhoud. " + onderEenDak,
+        "Op de werkfoto's is geen behangbeurt als zodanig te herkennen. De foto's hebben geen bijschrift. Behangwerk vraagt u aan via de offerte, samen met de rest van het werk.",
         offerteZin,
       ],
       photoIds: [] as string[],
@@ -238,14 +331,15 @@ export const content = {
       description:
         "Glaszetten en beglazing door Schildersbedrijf Miki in Lochem, als onderdeel van het totaalonderhoud.",
       h1: "Glaszetten",
+      lead: "Beglazing, naast het schilderwerk, onder hetzelfde dak.",
       strip: "Beglazing als onderdeel van hetzelfde werk.",
       grow: 1.05,
       width: "94%",
       tone: "paper",
       paragraphs: [
         "Naast het schilderwerk kunnen wij ook uw beglazing verzorgen.",
-        onderEenDak,
-        "Op de foto's hieronder ziet u onder meer wanden van glasblokken uit uitgevoerde klussen. Zonder titel, plaats of jaar.",
+        "Beglazing hoort bij het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit. " + onderEenDak,
+        "Op de foto's hieronder ziet u wanden van glasblokken: in een afgewerkte zolder, naast een wastafel, en rond een trapgat. Zonder titel, plaats of jaar. Een raam in een geschilderde gevel staat bij de andere werkfoto's, niet als aparte glaszetklus.",
         offerteZin,
       ],
       photoIds: ["04", "05", "06"],
@@ -258,17 +352,18 @@ export const content = {
       description:
         "Stukadoorswerk door Schildersbedrijf Miki, naast schilderwerk, behang, beglazing en klein timmerwerk.",
       h1: "Stukadoorswerk",
+      lead: "Stucwerk bij het onderhoud van uw pand.",
       strip: "Stucwerk bij het onderhoud van uw pand.",
       grow: 1.28,
       width: "80%",
       tone: "vlak",
       paragraphs: [
         "Naast het schilderwerk kunnen wij ook uw stukadoorswerk verzorgen.",
-        onderEenDak,
-        "Op de foto's ziet u binnenwanden en plafonds tijdens en na het stucwerk. Het zijn werkfoto's, geen benoemde projecten.",
+        "Wanden en plafonds horen bij het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit. " + onderEenDak,
+        "Op de foto's ziet u binnenwanden en plafonds: een kale wand, gipsplaten met voegen, stucwerk dat erop gezet wordt, en een ruimte die wit is afgewerkt. Het zijn werkfoto's, geen benoemde projecten, en geen voor-en-na-paar.",
         offerteZin,
       ],
-      photoIds: ["07", "11", "13", "14", "15"],
+      photoIds: ["07", "10", "11", "13", "14", "15", "17"],
     },
     timmerwerk: {
       id: "timmerwerk",
@@ -278,17 +373,18 @@ export const content = {
       description:
         "Klein timmerwerk en het vervangen van houtrot door Schildersbedrijf Miki in Lochem.",
       h1: "Klein timmerwerk",
+      lead: "Klein timmerwerk en het vervangen van houtrot.",
       strip: "Klein timmerwerk en het vervangen van houtrot.",
       grow: 0.96,
       width: "90%",
       tone: "white",
       paragraphs: [
         "Naast het schilderwerk kunnen wij ook klein timmerwerk en het vervangen van houtrot verzorgen.",
-        onderEenDak,
-        "Op de foto's ziet u onder meer aangetaste dorpels en kozijnen, en hout dat in een gevel of omlijsting is gezet. Losse werkfoto's, geen voor- en na-paren en geen projectnaam.",
+        "Het hoort bij het totaalonderhoud van uw woning, kantoor, winkel of bedrijfsunit. " + onderEenDak,
+        "Op de foto's ziet u aangetaste dorpels en kozijnen, een deurpaneel waar het hout rond het raam is weggerot, hout in een gevelvak, en een gebogen koplat met een ronde omlijsting. Losse werkfoto's: geen voor-en-na-paar, en geen projectnaam.",
         offerteZin,
       ],
-      photoIds: ["31", "33", "38", "40", "36", "55", "56"],
+      photoIds: ["31", "33", "35", "36", "38", "40", "55", "56"],
     },
   } satisfies Record<
     ServiceId,
@@ -299,6 +395,7 @@ export const content = {
       title: string;
       description: string;
       h1: string;
+      lead: string;
       strip: string;
       grow: number;
       width: string;
