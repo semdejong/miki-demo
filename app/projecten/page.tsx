@@ -18,7 +18,7 @@ export default function ProjectenPage() {
         <div className="mt-8 max-w-[62ch] space-y-5">
           <p>{copy.reeksUitleg}</p>
           <p>{copy.nietElkVak}</p>
-          <p>Klik op een foto om haar groter te bekijken. Met de pijltjestoetsen bladert u door, met de escapetoets sluit u.</p>
+          <p>Klik op een foto om haar groter te bekijken. Met de pijltjestoetsen bladert u door, met de Escape-toets sluit u.</p>
         </div>
       </header>
 

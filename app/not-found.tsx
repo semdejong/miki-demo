@@ -6,6 +6,7 @@ import ServiceStrips from "@/components/ServiceStrips";
 export const metadata: Metadata = {
   title: "Pagina niet gevonden",
   description: "Deze pagina van Schildersbedrijf Miki bestaat niet.",
+  robots: { index: false, follow: false, nocache: true },
 };
 
 export default function NotFound() {
@@ -19,7 +20,7 @@ export default function NotFound() {
         </p>
         <p className="mt-8">
           <Link href="/" className="inline-flex min-h-11 items-center bg-ink px-4 font-medium text-paper">
-            Naar de homepage
+            Naar de startpagina
           </Link>
         </p>
       </div>
