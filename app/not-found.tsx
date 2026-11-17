@@ -25,10 +25,10 @@ export default function NotFound() {
       </div>
 
       <div className="flex items-end border-t-[3px] border-olive" aria-hidden>
-        <div className="h-36 w-[16%] bg-vlak" />
-        <div className="h-16 w-[34%] border-l border-ink/20 bg-sheet" />
-        <div className="flex h-28 min-w-0 flex-1 items-end border-l border-ink/15 bg-paper px-4 py-4">
-          <p className="font-label text-olive-text">Snede</p>
+        <div className="h-44 w-[12%] bg-vlak sm:w-[16%]" />
+        <div className="h-24 w-[22%] border-l border-ink/20 bg-sheet sm:w-[26%]" />
+        <div className="flex h-56 min-w-0 flex-1 flex-col justify-end border-l border-ink/15 bg-paper px-5 py-5">
+          <p className="font-label text-olive-text">Deze baan is afgesneden</p>
         </div>
       </div>
 

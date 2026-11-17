@@ -64,18 +64,13 @@ export default function Gallery({ photos, groups, stacked = false }: Props) {
 
   const photo = active === null ? null : flat[active];
 
+  const gridClass = stacked
+    ? "grid grid-cols-1 items-start gap-x-4 gap-y-8 px-5 pb-10 md:px-10"
+    : "grid grid-cols-2 items-start gap-x-3 gap-y-8 px-5 pb-10 sm:grid-cols-3 md:px-10";
+
   const renderItem = (item: ProjectPhoto, index: number) => {
-    const portrait = item.height > item.width;
-    const wide = !portrait && index % 3 === 0;
-    const widthClass = stacked
-      ? "w-full"
-      : portrait
-        ? "w-full sm:w-[48%] lg:w-[24%]"
-        : wide
-          ? "w-full sm:w-[52%] lg:w-[40%]"
-          : "w-full sm:w-[48%] lg:w-[32%]";
     return (
-      <figure key={item.id} id={`foto-${item.id}`} className={`scroll-mt-36 ${widthClass}`}>
+      <figure key={item.id} id={`foto-${item.id}`} className="min-w-0 scroll-mt-36">
         <button
           type="button"
           className="block w-full text-left"
@@ -91,9 +86,10 @@ export default function Gallery({ photos, groups, stacked = false }: Props) {
             height={item.height}
             loading="lazy"
             decoding="async"
-            style={{ width: "100%", maxWidth: item.width, height: "auto" }}
+            className="h-auto w-full"
+            style={{ maxWidth: item.width }}
           />
-          <span className="font-label mt-2 block px-1 text-olive-text" aria-hidden>
+          <span className="font-label mt-2 block text-olive-text" aria-hidden>
             {item.id}
           </span>
         </button>
@@ -113,18 +109,16 @@ export default function Gallery({ photos, groups, stacked = false }: Props) {
           const slug = group.slug ?? group.label;
           return (
             <section key={slug} id={`groep-${slug}`} className="scroll-mt-28 border-t-[3px] border-olive" aria-labelledby={`kop-${slug}`}>
-              <h2 id={`kop-${slug}`} className="font-label px-5 pt-4 text-olive-text md:px-8">
+              <h2 id={`kop-${slug}`} className="font-label px-5 pt-5 text-olive-text md:px-10">
                 {group.label}
               </h2>
-              {group.note ? <p className="max-w-[58ch] px-5 pt-2 pb-4 md:px-8">{group.note}</p> : null}
-              <div className="flex flex-wrap items-start">{slice.map((item, offset) => renderItem(item, start + offset))}</div>
+              {group.note ? <p className="max-w-[58ch] px-5 pt-2 pb-5 md:px-10">{group.note}</p> : null}
+              <div className={gridClass}>{slice.map((item, offset) => renderItem(item, start + offset))}</div>
             </section>
           );
         })
       ) : (
-        <div className="flex flex-wrap items-start border-t-[3px] border-olive">
-          {flat.map((item, index) => renderItem(item, index))}
-        </div>
+        <div className={`border-t-[3px] border-olive ${gridClass}`}>{flat.map((item, index) => renderItem(item, index))}</div>
       )}
 
       {photo && active !== null ? (

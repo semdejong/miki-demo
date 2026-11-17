@@ -16,9 +16,9 @@ export default function OffertePage() {
       <header className="px-5 pt-14 pb-8 md:px-10 md:pt-16">
         <h1 className="max-w-[14ch] text-[clamp(2.6rem,5vw,4rem)] leading-[1.02]">{content.pages.offerte.h1}</h1>
         <div className="mt-8 max-w-[58ch] space-y-5">
-          <p>{copy.offerte}</p>
+          <p>Graag kom ik vrijblijvend bij u langs om een offerte uit te brengen.</p>
           <p>
-            Schrijf erbij of het om een woning, kantoor, winkel of bedrijfsunit gaat, en of u schilderwerk, behang, beglazing, stucwerk of klein timmerwerk bedoelt. Een vaste aanneemsom of een prijs op uren: dat spreken we af.
+            Schrijf erbij of het om een woning, kantoor, winkel of bedrijfsunit gaat, en of u schilderwerk, behang, beglazing, stucwerk of klein timmerwerk bedoelt.
           </p>
         </div>
       </header>

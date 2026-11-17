@@ -31,11 +31,11 @@ export function PandStrips() {
 export function QuoteWays() {
   return (
     <div className="border-t-[3px] border-olive">
-      <div className="flex flex-col min-[800px]:flex-row min-[800px]:items-stretch">
+      <div className="flex flex-col min-[1024px]:flex-row min-[1024px]:items-stretch">
         {content.wijzen.map((way) => (
           <div
             key={way.id}
-            className={`baan flex min-h-44 flex-col justify-between px-5 py-8 min-[800px]:min-h-72 ${toneClass[way.tone]}`}
+            className={`baan flex min-h-44 flex-col justify-between px-5 py-8 min-[1024px]:min-h-64 ${toneClass[way.tone]}`}
             style={{ ["--grow" as string]: way.grow, ["--baan-w" as string]: way.width }}
           >
             <p className="font-label text-olive-text">{way.label}</p>
